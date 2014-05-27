@@ -17,8 +17,7 @@ public class TileMap {
 	public TileMap() {
 		mapdata = new int[25][25];
 		for(int i = 0; i < mapdata.length; ++i)
-			for(int k = 0; k < mapdata[0].length; ++k)
-				mapdata
+			for(int k = 0; k < mapdata[0].length; ++k);
 	}
 	
 	public TileMap(int x, int y) {
