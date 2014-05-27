@@ -42,11 +42,11 @@ public class Tileizer {
 	private static ArrayList<BufferedImage> cutter(BufferedImage source, int total_w, int total_h, int w, int h, int n) {
 		// First see how many columns and rows there are.
 		int nx = total_w/w, ny = total_h/h;
-		ArrayList<BufferedImage> lst = new ArrayList<BufferedImage>(n);
+		ArrayList<BufferedImage> lst = new ArrayList<BufferedImage>();
 		
 		// Iterate through the image and pull each sub image out.
-		for (int i = 0; i < nx; ++i)
-			for (int j = 0; j < ny; ++j)
+		for (int j = 0; j < ny; ++j)
+			for (int i = 0; i < nx; ++i)
 				if (lst.size() < n)
 					lst.add(source.getSubimage(i*w, j*h, w, h));
 				else

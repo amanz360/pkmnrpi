@@ -4,7 +4,9 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import objects.TileMap;
@@ -12,7 +14,7 @@ import util.Tileizer;
 
 public class MapEditor extends JPanel{
 	private JPanel selection, creation;
-	private JPanel[] mytiles;
+	private JLabel[] mytiles;
 	
 	public MapEditor() {
 		this.setBackground(Color.red);
@@ -31,21 +33,24 @@ public class MapEditor extends JPanel{
 		this.add(creation);
 		
 		TileMap.populate_tiles();
-		mytiles = new JPanel[250];
+		mytiles = new JLabel[250];
 		for(int i = 0; i < 250; ++i) {
-			JPanel temp = new JPanel();
-			temp.setSize(Tileizer.WIDTH, Tileizer.WIDTH);
-			selection.add(temp);
-			mytiles[i] = temp;
-			temp.setVisible(true);
+			if(i >= TileMap.tiles.size()) {
+				JLabel temp = new JLabel();
+				temp.setSize(Tileizer.WIDTH, Tileizer.WIDTH);
+				selection.add(temp);
+				mytiles[i] = temp;
+				temp.setVisible(true);
+			} else {
+				JLabel temp = new JLabel(new ImageIcon(TileMap.tiles.get(i)));
+				temp.setSize(Tileizer.WIDTH, Tileizer.WIDTH);
+				selection.add(temp);
+				mytiles[i] = temp;
+				temp.setVisible(true);
+			}
 		}
-	}
-	
-	public void init() {
-		int i = 0;
-		for(BufferedImage img : TileMap.tiles) {
-			mytiles[i++].getGraphics().drawImage(img, 0, 0, null);
-		}
+		
+		// Initilize new map
 	}
 	
 	public static void main(String[] args) {
@@ -55,7 +60,6 @@ public class MapEditor extends JPanel{
 		f.setVisible(true);
 		MapEditor m = new MapEditor();
 		f.add(m);
-		m.init();
 		f.pack();
 	}
 
