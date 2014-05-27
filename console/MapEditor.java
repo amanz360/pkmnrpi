@@ -14,7 +14,7 @@ import util.Tileizer;
 
 public class MapEditor extends JPanel{
 	private JPanel selection, creation;
-	private JLabel[] mytiles;
+	private JLabel[] mytiles, newtiles;
 	
 	public MapEditor() {
 		this.setBackground(Color.red);
@@ -42,7 +42,7 @@ public class MapEditor extends JPanel{
 				mytiles[i] = temp;
 				temp.setVisible(true);
 			} else {
-				JLabel temp = new JLabel(new ImageIcon(TileMap.tiles.get(i)));
+				JLabel temp = new JLabel(TileMap.icons.get(i));
 				temp.setSize(Tileizer.WIDTH, Tileizer.WIDTH);
 				selection.add(temp);
 				mytiles[i] = temp;
