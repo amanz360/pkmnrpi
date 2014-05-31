@@ -14,6 +14,8 @@ import javax.swing.ImageIcon;
 // This class holds all of the methods to split up a tiled image into its separate tiles.
 public class Tileizer {
 	public static final int WIDTH = 16;
+	private static final int s_w = 16;
+	
 	
 	// This method just takes a filename and the number of tokens to return.
 	// It uses the Tile.width value to determine default tile size.
@@ -24,7 +26,7 @@ public class Tileizer {
 		BufferedImage b = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
 		b.getGraphics().drawImage(i, 0, 0, w, h, 0, 0, w, h, null);
 		
-		return cutter(b, w, h, WIDTH, WIDTH, n);
+		return cutter(b, w, h, s_w, s_w, n);
 	}
 	
 	// This is a more generic version of tile_maker that will cut out icons with the given dimensions.

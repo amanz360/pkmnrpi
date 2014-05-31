@@ -4,7 +4,7 @@ import javax.swing.Icon;
 import javax.swing.JLabel;
 
 public class Tile extends JLabel {
-	public int x, y, idx, id;
+	public int x, y, idx;
 
 	public Tile() {super();}
 
@@ -18,19 +18,17 @@ public class Tile extends JLabel {
 
 	public Tile(String s, Icon icon, int i) {super(s, icon, i);}
 	
-	public Tile(Icon icon, int x, int y, int idx, int id) {
+	public Tile(Icon icon, int x, int y, int idx) {
 		super(icon);
 		this.x = x;
 		this.y = y;
 		this.idx = idx;
-		this.id = id;
 	}
 	
-	public Tile(int x, int y, int idx, int id) {
+	public Tile(int x, int y, int idx) {
 		super();
 		this.x = x;
 		this.y = y;
 		this.idx = idx;
-		this.id = id;
 	}
 }
