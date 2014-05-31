@@ -10,7 +10,7 @@ public class Pokemon {
 	public int type, height, weight;
 	public int max_health, attack, defense, speed, spec_attack, spec_defense, current_health, level;
 	
-	private void generate_stats(int lvl) {
+	public void generate_stats(int lvl) {
 		
 	}
 }

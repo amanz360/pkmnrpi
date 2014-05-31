@@ -11,21 +11,28 @@ import util.Tileizer;
 public class TileMap {
 	public static ArrayList<BufferedImage> tiles;
 	public static ArrayList<ImageIcon> icons;
+	public static final int DEFAULT_ICON = 34;
 	
 	public int[][] mapdata;
 	
 	public TileMap() {
 		mapdata = new int[25][25];
-		for(int i = 0; i < mapdata.length; ++i)
-			for(int k = 0; k < mapdata[0].length; ++k);
+		clear_map();
 	}
 	
 	public TileMap(int x, int y) {
 		mapdata = new int[y][x];
+		clear_map();
 	}
 	
 	public TileMap(int[][] map) {
 		mapdata = map;
+	}
+	
+	public void clear_map() {
+		for(int i = 0; i < mapdata.length; ++i)
+			for(int k = 0; k < mapdata[0].length; ++k)
+				mapdata[i][k] = DEFAULT_ICON;
 	}
 	
 	public void buffer_bottom_rows(int n) {
