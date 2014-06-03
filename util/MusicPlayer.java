@@ -12,34 +12,33 @@ import javax.sound.midi.Sequencer;
 public class MusicPlayer {
 	public static void player(String filename) {
 
-	    try {
-	        // From file
-	        Sequence sequence = MidiSystem.getSequence(new File(filename));
-	        // Create a sequencer for the sequence
-	        Sequencer sequencer = MidiSystem.getSequencer();
-	        sequencer.open();
-	        sequencer.setSequence(sequence);
-	    
-	        // Start playing
-	        sequencer.start();
-	    } 
-	     catch (IOException e) {
-	    	e.printStackTrace();
-	    } catch (MidiUnavailableException e) {
-	    	e.printStackTrace();
-	    } catch (InvalidMidiDataException e) {
-	    	e.printStackTrace();
-	    }
+		try {
+			// From file
+			Sequence sequence = MidiSystem.getSequence(new File(filename));
+			// Create a sequencer for the sequence
+			Sequencer sequencer = MidiSystem.getSequencer();
+			sequencer.open();
+			sequencer.setSequence(sequence);
 
-}
-	
-	 public static void main(String[]args){
-		 MusicPlayer.player("src/team-rocket.mid");
-		 try {
-			    Thread.sleep(1000);
-			} catch(InterruptedException ex) {
-			    Thread.currentThread().interrupt();
-			}
-		 MusicPlayer.player("src/team-rocket.mid");
-	 }
+			// Start playing
+			sequencer.start();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (MidiUnavailableException e) {
+			e.printStackTrace();
+		} catch (InvalidMidiDataException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public static void main(String[] args) {
+		MusicPlayer.player("src/team-rocket.mid");
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException ex) {
+			Thread.currentThread().interrupt();
+		}
+		MusicPlayer.player("src/team-rocket.mid");
+	}
 }
