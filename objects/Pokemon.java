@@ -7,9 +7,25 @@ public class Pokemon {
 	public String name;
 	public boolean male = true;
 	public int type, height, weight;
-	public int max_health, attack, defense, speed, spec_attack, spec_defense, current_health, level;
+	public int max_health, attack, defense, agility, special, current_health, level;
+	public int IV_atk, IV_def, IV_agi, IV_spec, IV_HP;
+	public int base_HP, base_atk, base_def, base_agi, base_spec;
 
 	public void generate_stats(int lvl) {
 
+	}
+	
+	
+	//formula for stats =    (IV + Base) x Level
+	//                  =    -------------------  + 5
+	//                  =            50
+	//note: HP is slightly different
+	public void update_stats(){
+		this.attack = ((IV_atk + base_atk) * level)/50 + 5;
+		this.defense = ((IV_def + base_def) * level)/50 + 5;
+		this.agility = ((IV_agi + base_agi) * level)/50 + 5;
+		this.special= ((IV_spec + base_spec) * level)/50 + 5;
+		
+		this.max_health = ((IV_HP + base_HP + 50) * level)/50 + 10;
 	}
 }
